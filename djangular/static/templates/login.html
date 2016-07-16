@@ -1,6 +1,7 @@
 <center>
 <div>
-<form method="post" action="" name="loginForm">
+
+<form name="loginForm" ng-submit="loginSubmit()">
 
 Email: <input type="email" name="email" ng-model="email">
 <span style="color:red" ng-show="loginForm.email.$touched && loginForm.email.$error.email">Not a valid email address</span>
