@@ -1,0 +1,14 @@
+<center>
+<div>
+<form method="post" action="" name="loginForm">
+
+Email: <input type="email" name="email" ng-model="email">
+<span style="color:red" ng-show="loginForm.email.$touched && loginForm.email.$error.email">Not a valid email address</span>
+<br/>
+Password: <input type="password" name="password" ng-model="password">
+<span style="color:red" ng-show="loginForm.password.$touched && loginForm.password.$invalid">Please enter a 6 char password</span><br/>
+<input type="submit" value="submit" ng-disabled='loginForm.email.$invalid'>
+</form>
+
+</div>
+</center>
