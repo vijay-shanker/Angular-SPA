@@ -56,3 +56,18 @@ app.controller('profileController', function($scope, $http, $rootScope, $window)
 
 });
 
+app.controller('registerController', function($scope, $http){
+	$scope.submitForm = function(){
+		var fd = new FormData();
+		var token = localStorage.getItem('token')
+		var headers = {headers:{''}}
+		fd.append('email', $scope.email);
+		fd.append('contact_no', $scope.contact_no);
+		fd.append('password', $scope.password);
+
+
+		$http.post
+
+	}
+});
+
