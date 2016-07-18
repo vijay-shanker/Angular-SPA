@@ -13,5 +13,9 @@ app.config(function($routeProvider){
 		controller  : 'loginController'
 
 	})
+	.when('/profile/', {
+		templateUrl:'static/templates/profile.html'
+	})
+	
 	.otherwise({'redirectTo':'/'});
 });

@@ -23,7 +23,7 @@ class LoginView(generics.GenericAPIView):
 			user = authenticate(email=data['email'], password=data['password'])
 			if user:
 				token, created = Token.objects.get_or_create(user=user)
-				return Response({'token':token.key}, status=status.HTTP_200_OK)
+				return Response({'token':token.key, 'userid':user.id}, status=status.HTTP_200_OK)
 
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
