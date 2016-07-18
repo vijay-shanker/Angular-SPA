@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate
-
+from django.contrib.auth import get_user_model
+from django.http import JsonResponse
 # Create your views here.
 from rest_framework import generics
 from rest_framework.authtoken.models  import Token
@@ -11,7 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 from .serializers import *
-
+User = get_user_model()
 
 class LoginView(generics.GenericAPIView):
 	serializer_class = UserLoginSerializer
@@ -32,3 +33,12 @@ class UserData(ModelViewSet):
 	permission_classes = (IsAuthenticated,)
 	serializer_class= UserSerializer
 	queryset = User.objects.all()
+
+
+class UploadPicView(generics.GenericAPIView):
+	def post(self, request, *args, **kwargs):
+		# import pdb;pdb.set_trace();
+		user = User.objects.get(pk=request.POST['user_id'])
+		user.profile_pic = request.data['file']
+		user.save()
+		return JsonResponse({'uploaded':True})

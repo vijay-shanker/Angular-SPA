@@ -5,6 +5,7 @@ from userprofile.views import UserData
 
 urlpatterns = [
     url(r'^login/', LoginView.as_view(), name="login"),
+    url(r'^upload-pic/$', UploadPicView.as_view(), name="upload_pic"),
     ]
 
 router = DefaultRouter()

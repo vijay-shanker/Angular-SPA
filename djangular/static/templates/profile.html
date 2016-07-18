@@ -3,4 +3,8 @@
 	<li>Email: //email//</li>
 	<li>Contact no: //contact_no//</li>
 	<div ng-if="profile_pic">Profile pic: <img src="//profile_pic//"></div>
+	<form>
+<input type="hidden" required ng-model="userid" ng-init="userid=//userid//" />
+<input type="file" name="pic" accept="image/*" onchange="angular.element(this).scope().uploadFile(this.files)">
+</form>
 </div>

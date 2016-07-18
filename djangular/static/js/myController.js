@@ -17,7 +17,7 @@ app.controller('loginController', function($scope, $http, $window, $rootScope){
 
 });
 
-app.controller('profileController', function($scope, $http, $rootScope){
+app.controller('profileController', function($scope, $http, $rootScope, $window){
 	var token = localStorage.getItem('token');
 	var userid = localStorage.getItem('userid');
 	var userprofile_url = '/userprofile/users/' + userid + '/'
@@ -28,13 +28,31 @@ app.controller('profileController', function($scope, $http, $rootScope){
 			$scope.username=data.username;
 			$scope.email = data.email;
 			$scope.contact_no = data.contact_no;
+			$scope.userid=data.id;
+
 			if (data.profile_pic){
 				$scope.profile_pic = data.profile_pic
 			}else{
 				$scope.profile_pic = ''
 			}
+
 		}
 	});
+	$scope.uploadFile = function(files) {
+	    var fd = new FormData();
+	    //Take the first selected file
+	    fd.append("file", files[0]);
+	    fd.append("user_id", $scope.userid)
+
+	    $http.post('/userprofile/upload-pic/', fd, {
+	        withCredentials: false,
+	        headers: {'Content-Type': undefined },
+	        transformRequest: angular.identity
+	    }).success(function(data){
+	    	$window.location.reload();
+	    });
+
+};
 
 });
 
