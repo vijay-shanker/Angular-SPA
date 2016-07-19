@@ -1,0 +1,17 @@
+<div>
+<form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+Email:<input type="email" name="email" ng-model="email" required/>
+<p ng-show="userForm.email.$invalid && !userForm.email.$pristine" >Not a valid email</p><br/>
+
+Contact: <input type="text" name="contact_no" ng-model="contact_no" ng-minlength="10" required />
+<p ng-show="userForm.contact_no.$invalid && !userForm.contact_no.$pristine" >Enter valid contact no</p>
+<br/>
+
+Password: <input type="password" name="password" ng-model="password" ng-minlength="6" required />
+<p ng-show="userForm.password.$invalid && !userForm.password.$pristine" >Min 6 chars</p>
+<br/>
+
+
+<button type="submit" ng-disabled="userForm.$invalid" >Submit</button>
+
+</div>

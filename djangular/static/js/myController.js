@@ -1,6 +1,6 @@
 
 app.controller('loginController', function($scope, $http, $window, $rootScope){
-	$scope.message = 'Hello from loginController';
+
 	$scope.loginSubmit = function() {
 		var email = $scope.email;
 		var password = $scope.password;
@@ -8,6 +8,8 @@ app.controller('loginController', function($scope, $http, $window, $rootScope){
 			{'email':email, 'password':password}
 		).success(function(data, status, headers, config){
 			if (status == 200){
+				$rootScope.is_logged =1;
+				console.log($rootScope.is_logged);
 				localStorage.setItem('token', data.token);
 				localStorage.setItem('userid', data.userid);
 				$window.location.href = '#/profile/';
@@ -56,18 +58,37 @@ app.controller('profileController', function($scope, $http, $rootScope, $window)
 
 });
 
-app.controller('registerController', function($scope, $http){
+app.controller('registerController', function($scope, $http, $window){
 	$scope.submitForm = function(){
-		var fd = new FormData();
-		var token = localStorage.getItem('token')
-		var headers = {headers:{''}}
-		fd.append('email', $scope.email);
-		fd.append('contact_no', $scope.contact_no);
-		fd.append('password', $scope.password);
+		$http({
+			method:'POST', 
+			url: '/userprofile/users/',
+			data:{'email':$scope.email,'password':$scope.password, 'contact_no':$scope.contact_no}
+		}).success(function(data){
+			$rootScope.is_logged = false;
+			$window.location.href='/';
 
+		})
 
-		$http.post
+	};
+});
 
+app.controller('indexCtrl', function($scope, $window, $http, $rootScope){
+	
+	$rootScope.is_logged=1;
+	$scope.logout = function(){
+		var userid = localStorage.getItem('userid');
+		$http({
+			method:'POST',
+			url : '/userprofile/logout/',
+			data : {'userid':userid}
+		}).success(function(data){
+			localStorage.removeItem('userid');
+			$rootScope.is_logged=0;
+			$window.location.href = '#/login/';	
+
+		});
+		
 	}
 });
 

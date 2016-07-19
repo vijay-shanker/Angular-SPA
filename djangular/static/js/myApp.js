@@ -13,14 +13,15 @@ app.config(function($routeProvider){
 		controller  : 'loginController'
 
 	})
-	
+
 	.when('/profile/', {
 		templateUrl:'/static/templates/profile.html',
 		controller : 'profileController'
 	})
 
 	.when('/register/',{
-		templateUrl:'/static/templates/register.html'
+		templateUrl:'/static/templates/register.html',
+		controller : 'registerController'
 	})
 
 	.otherwise({'redirectTo':'/'});

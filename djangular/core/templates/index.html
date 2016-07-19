@@ -7,9 +7,13 @@
 </head>
 <body>
 <center>
-	<div>
-	<a href="#/login/">Login</a>&nbsp;&nbsp;
-	<a href="#/register/">Register</a>
+	<div ng-controller="indexCtrl">
+
+	<a ng-click="logout()" ng-show="is_logged">Logout</a>
+	
+	<a href="#/login/" ng-hide="is_logged">Login</a>&nbsp;&nbsp;
+	<a href="#/register/" ng-hide="is_logged">Register</a>
+
 	</div>
 </center>
 <div ng-view>
