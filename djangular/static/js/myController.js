@@ -39,12 +39,13 @@ $scope.remove = function(index){
 $scope.getTotal = function(){
 	var total=0;
 	for(var i=0; i < $scope.items.length; i++ ){
-		total +=$scope.items[i].price;
+                var d = $scope.items[i].price * $scope.items[i].quantity;
+		total += d;
 	}
-	return total;	
+	$scope.total=total;	
 }
 
- //$scope.$watch('$scope.getTotal', $scope.getTotal);
+ $scope.$watch('total', $scope.getTotal);
 
 });
 
