@@ -29,10 +29,5 @@ app.config(function($routeProvider){
                 controller: 'testController'
         })
 
-        .when('/cart/', {
-                templateUrl: '/static/templates/cart.html',
-                controller: 'cartController'
-        })
-
 	.otherwise({'redirectTo':'/'});
 });

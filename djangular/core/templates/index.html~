@@ -13,7 +13,7 @@
 	
 	<a href="#/login/" ng-hide="is_logged">Login</a>&nbsp;&nbsp;
 	<a href="#/register/" ng-hide="is_logged">Register</a>
-        <a href="#/test1/"> Test </a>&nbsp;&nbsp;&nbsp;
+        <a href="#/test1/"> Test </a>
         <a href="#/cart/">Cart </a>
 
 	</div>

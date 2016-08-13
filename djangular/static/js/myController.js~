@@ -44,7 +44,7 @@ $scope.getTotal = function(){
 	return total;	
 }
 
- //$scope.$watch('$scope.getTotal', $scope.getTotal);
+$scope.$watch('$scope.getTotal', $scope.getTotal);
 
 });
 
