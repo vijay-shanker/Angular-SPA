@@ -24,15 +24,15 @@ app.config(function($routeProvider){
 		controller : 'registerController'
 	})
 
-        .when('/test1/', {
-                templateUrl: '/static/templates/greetings.html',
-                controller: 'testController'
-        })
+    .when('/test1/', {
+            templateUrl: '/static/templates/greetings.html',
+            controller: 'testController'
+    })
 
-        .when('/cart/', {
-                templateUrl: '/static/templates/cart.html',
-                controller: 'cartController'
-        })
+    .when('/cart/', {
+            templateUrl: '/static/templates/cart.html',
+            controller: 'cartController'
+    })
 
 	.otherwise({'redirectTo':'/'});
 });

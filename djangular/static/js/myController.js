@@ -20,7 +20,11 @@ app.controller('loginController', function($scope, $http, $window, $rootScope){
 });
 
 app.controller('testController', function($scope, $http, $window){
+	$scope.isStupid = false;
         $scope.greeting = {'text':'Hello World !'}
+        $scope.showStupid = function(){
+        	$scope.isStupid = !$scope.isStupid;
+        }
 
 });
 
